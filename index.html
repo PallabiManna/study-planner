@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Study Planner</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+
+    <div class="logo">
+        📚 Study Planner
+    </div>
+
+    <div class="nav-links">
+        <a href="#dashboard">Dashboard</a>
+        <a href="#addTask">Add Task</a>
+        <a href="#myTasks">My Tasks</a>
+    </div>
+
+</nav>
+
+
+<h1>📚 Study Planner</h1>
+
+
+<!-- DASHBOARD -->
+
+<div class="stats" id="dashboard">
+
+    <div class="stat-box">
+        <h3>Total Tasks</h3>
+        <p id="totalTasks">0</p>
+    </div>
+
+    <div class="stat-box">
+        <h3>Pending</h3>
+        <p id="pendingTasks">0</p>
+    </div>
+
+    <div class="stat-box">
+        <h3>Completed</h3>
+        <p id="completedTasks">0</p>
+    </div>
+
+</div>
+
+
+<!-- ADD TASK -->
+
+<div class="container" id="addTask">
+
+    <h2>Add Study Task</h2>
+
+    <input
+        type="text"
+        id="subject"
+        placeholder="Enter subject"
+    >
+
+    <input
+        type="text"
+        id="topic"
+        placeholder="Enter topic"
+    >
+
+    <input
+        type="date"
+        id="date"
+    >
+
+    <select id="priority">
+
+        <option value="Low">
+            Low Priority
+        </option>
+
+        <option value="Medium">
+            Medium Priority
+        </option>
+
+        <option value="High">
+            High Priority
+        </option>
+
+    </select>
+
+    <button onclick="addTask()">
+        Add Task
+    </button>
+
+</div>
+
+
+<!-- MY TASKS -->
+
+<div class="container" id="myTasks">
+
+    <h2>My Tasks</h2>
+
+
+    <!-- DATE SUMMARY -->
+
+    <div class="task-summary">
+
+        <div>
+            <span id="todayCount">0</span>
+            <p>Today's Tasks</p>
+        </div>
+
+        <div>
+            <span id="overdueCount">0</span>
+            <p>Overdue</p>
+        </div>
+
+        <div>
+            <span id="upcomingCount">0</span>
+            <p>Upcoming</p>
+        </div>
+
+    </div>
+
+
+    <!-- FILTERS -->
+
+    <div class="filters">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search by subject or topic"
+            onkeyup="filterTasks()"
+        >
+
+
+        <select
+            id="statusFilter"
+            onchange="filterTasks()"
+        >
+
+            <option value="all">
+                All Tasks
+            </option>
+
+            <option value="pending">
+                Pending
+            </option>
+
+            <option value="completed">
+                Completed
+            </option>
+
+        </select>
+
+
+        <select
+            id="priorityFilter"
+            onchange="filterTasks()"
+        >
+
+            <option value="all">
+                All Priorities
+            </option>
+
+            <option value="High">
+                High
+            </option>
+
+            <option value="Medium">
+                Medium
+            </option>
+
+            <option value="Low">
+                Low
+            </option>
+
+        </select>
+
+
+        <select
+            id="sortFilter"
+            onchange="sortTasks()"
+        >
+
+            <option value="none">
+                Sort Tasks
+            </option>
+
+            <option value="dateAsc">
+                Date: Earliest First
+            </option>
+
+            <option value="dateDesc">
+                Date: Latest First
+            </option>
+
+            <option value="priority">
+                Priority: High to Low
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <!-- TASK LIST -->
+
+    <ul id="taskList"></ul>
+
+
+    <!-- CLEAR COMPLETED -->
+
+    <button
+        id="clearCompletedBtn"
+        onclick="clearCompletedTasks()"
+    >
+        🗑️ Clear Completed Tasks
+    </button>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
